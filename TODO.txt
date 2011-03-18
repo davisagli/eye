@@ -1,0 +1,34 @@
+It's probably time to write some tests...
+
+Traversal:
+ - BTrees
+Icons:
+ - tuple
+ - list
+ - dict
+ - persistent object
+ - other object
+Stats:
+ - object size
+ - # of loads (???)
+ - total size
+ - size by class
+ - # of transactions in history
+Issues:
+ - Should probably include various object aspects instead of just picking one
+ - Unicode in repr?
+ - Need to urlencode / in keys (e.g. mimetype objects)
+ - Detect object cycles
+Other features:
+ - Pretty font
+ - Show file name, basic stats
+ - Batched tree for large containers
+ - ZEXP export
+ - API to invoke the thing with some root object
+ - Browse object history
+ - Authentication
+ - Can you imagine if it was fulltext-searchable and editable? OMG!
+ - Re-root the tree
+ - Show contained objects in right panel?
+ - Option to hide builtins
+ - Show docstrings, code when available

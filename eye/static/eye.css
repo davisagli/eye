@@ -1,0 +1,70 @@
+body, html { overflow: hidden; margin: 0; padding: 0; }
+
+
+body
+{
+    font-family: "Lucida Grande",Verdana,Lucida,Helvetica,Arial,sans-serif;
+    color: #000;
+    background-color: #fff;
+
+     width:100%; 
+     text-align:left; 
+/*     margin: 5px auto;  */
+
+}
+
+
+.ui-layout-pane { /* all 'panes' */ 
+		background: #FFF; 
+		border: 1px solid #BBB; 
+		padding: 10px; 
+		overflow: auto;
+} 
+
+.ui-layout-resizer { /* all 'resizer-bars' */ 
+		background: #DDD; 
+} 
+
+.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+} 
+
+a:link { border: none; color: #000 ; text-decoration: none; }
+a:visited { border: none; color: #000 ; text-decoration: none;}
+a:active { border: none; color: #000 ; text-decoration: none;}
+a:hover { border: none; color:#000 ; text-decoration: none; }
+img { border: none;}		
+
+/* Styles specific to this particular page */
+#left, #middle, #right, #bottom, #status
+{
+}
+
+#left {
+}
+
+#middle, #right {
+}
+
+#bottom {
+}
+
+#status {
+                height: 15px;
+                font-size: 10px;
+                color: #7A7A7A;
+}
+
+#highlight {
+    width: 100%;
+}
+
+#poweredby {
+    float: right; 
+    margin-right: 1%; 
+    font-size: 0.7em;
+}
+
+span.persistent a {
+    color: blue !important;
+}
