@@ -1,6 +1,3 @@
-Before release:
- - docs
-
 It's probably time to write some tests...
 
 Traversal:
@@ -23,7 +20,7 @@ Issues:
  - Detect object cycles
  - Can we prevent weird shit happening via descriptors?
 Other features:
- - Pretty font
+ - Pretty fonts
  - Show file name, basic stats
  - Batched tree for large containers
  - ZEXP export
