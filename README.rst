@@ -5,10 +5,10 @@ Eye provides a browser-based UI to browse the contents of a ZODB database.
 
 It can also be used as a generic Python object browser.
 
-At this point Eye has been tested on Python 2.6.
-
 Installation
 ============
+
+At this point Eye has been tested on Python 2.6.
 
 Eye has a few dependencies including the Pyramid web framework. Therefore it's
 recommended to install it in a virtualenv or buildout to keep it isolated from

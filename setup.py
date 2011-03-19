@@ -14,7 +14,7 @@ requires = [
     ]
 
 setup(name='eye',
-      version='0.0',
+      version='1.0b1',
       description='A generic web-based browser of ZODB databases.',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[
@@ -31,7 +31,7 @@ setup(name='eye',
       author='David Glick',
       author_email='dglick@gmail.com',
       url='http://github.com/davisagli/eye',
-      keywords='zodb pyramid zope',
+      keywords='zodb pyramid zope inspector',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
