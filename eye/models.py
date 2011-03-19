@@ -1,3 +1,4 @@
+import cgi
 import collections
 import inspect
 
@@ -17,11 +18,11 @@ class Node(object):
             d = {}
         elif type_.__name__.endswith('BTree'):
             # ZODB BTrees
-            d = dict((str(k), v) for k, v in self.context.iteritems())
+            d = self.context
         elif isinstance(self.context, collections.Mapping):
             d = self.context
         elif isinstance(self.context, collections.Iterable):
-            d = dict((str(i), v) for i, v in enumerate(self.context))
+            d = dict(enumerate(self.context))
         elif hasattr(self.context, '__Broken_state__'):
             # ZODB
             if isinstance(self.context.__Broken_state__, collections.Mapping):
@@ -35,7 +36,7 @@ class Node(object):
             except AttributeError:
                 d = {}
         
-        return dict((k, Node(v)) for k,v in d.iteritems())
+        return dict((cgi.escape(str(k)), Node(v)) for k,v in d.iteritems())
 
     def __getitem__(self, name):
         return self._dict()[name]

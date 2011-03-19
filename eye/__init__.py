@@ -5,6 +5,8 @@ import sys
 from pyramid.config import Configurator
 from paste.httpserver import serve
 from eye.models import Node
+from eye import patch
+patch # pyflakes
 
 
 def eye(root=None):

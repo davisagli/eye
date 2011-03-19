@@ -1,3 +1,5 @@
+- Need to urlencode / in keys (e.g. Zope mimetype objects)
+
 It's probably time to write some tests...
 
 Icons:
@@ -14,7 +16,6 @@ Stats:
  - # of transactions in history
 Issues:
  - Should probably include various object aspects instead of just picking one
- - Need to urlencode / in keys (e.g. Zope mimetype objects)
  - Detect object cycles
  - Can we prevent weird shit happening via descriptors?
 Other features:
