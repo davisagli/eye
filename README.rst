@@ -3,6 +3,9 @@ Overview
 
 Eye provides a browser-based UI to browse the contents of a ZODB database.
 
+It can browse "broken" ZODB objects, so you don't have to have your
+application code present in the Python environment to use the tool.
+
 It can also be used as a generic Python object browser.
 
 Installation
