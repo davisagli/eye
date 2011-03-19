@@ -1,7 +1,5 @@
 Before release:
- - license
  - docs
- - clean up js
 
 It's probably time to write some tests...
 

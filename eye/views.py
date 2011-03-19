@@ -38,7 +38,7 @@ def _build_tree(node, level = 1024, remove_root = 0, id=None):
         return None
     level -= 1
     
-    node = {}
+    tree = {}
     children = []
     result = None
     items = node.items()
@@ -50,18 +50,18 @@ def _build_tree(node, level = 1024, remove_root = 0, id=None):
     if remove_root:
         return children
     else:
-        node["key"] = id
-        node["title"] = '%s (%s)' % (id, type(node.context).__name__)
-        node["children"] = []
+        tree["key"] = id
+        tree["title"] = '%s (%s)' % (id, type(node.context).__name__)
+        tree["children"] = []
 
         if len(items):
-            node["isFolder"] = True
+            tree["isFolder"] = True
 
-            if not len(node["children"]):
-                node["isLazy"] = True
+            if not len(tree["children"]):
+                tree["isLazy"] = True
 
-        node["children"] = children
+        tree["children"] = children
         if isinstance(node.context, Persistent):
-            node['addClass'] = 'persistent'
+            tree['addClass'] = 'persistent'
 
-    return node 
+    return tree
