@@ -37,6 +37,9 @@ Then open your browser to http://localhost:8080/
 
 .. image:: https://github.com/davisagli/eye/raw/master/screenshot.png
 
+Persistent objects are shown in blue; other objects included in the pickles of
+persistent objects are shown in black.
+
 Inspect an arbitrary object
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
