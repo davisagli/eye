@@ -1,6 +1,8 @@
 import collections
 import inspect
 
+PRIMITIVES = set([int, bool, str, unicode, type(None)])
+
 
 class Node(object):
 
@@ -8,15 +10,14 @@ class Node(object):
         self.context = context
     
     def _dict(self):
-        if self.context is None:
-            d = {}
-        elif isinstance(self.context, basestring):
+        if type(self.context) in PRIMITIVES:
             d = {}
         elif isinstance(self.context, collections.Mapping):
             d = self.context
         elif isinstance(self.context, collections.Iterable):
             d = dict((str(i), v) for i, v in enumerate(self.context))
         elif hasattr(self.context, '__Broken_state__'):
+            # ZODB
             d = self.context.__Broken_state__
         else:
             d = dict(inspect.getmembers(self.context))
