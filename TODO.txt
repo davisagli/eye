@@ -1,7 +1,5 @@
 It's probably time to write some tests...
 
-Traversal:
- - BTrees
 Icons:
  - tuple
  - list
