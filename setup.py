@@ -21,8 +21,9 @@ setup(name='eye',
         "Development Status :: 3 - Alpha",
         "Environment :: Web Environment",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: BSD License",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2.6",
         "Framework :: Pylons",
         "Framework :: ZODB",
         "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
@@ -39,9 +40,9 @@ setup(name='eye',
       test_suite="eye",
       entry_points = """\
       [paste.app_factory]
-      main = eye:main
+      main = eye:eye
       [console_scripts]
-      eye = eye:main
+      eye = eye:eye
       """,
       paster_plugins=['pyramid'],
       )

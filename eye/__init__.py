@@ -4,13 +4,11 @@ import sys
 
 from pyramid.config import Configurator
 from paste.httpserver import serve
-import eye
 from eye.models import Node
 
 
-def main(args=None, root=None):
-    if args is None:
-        args = sys.argv[1:]
+def eye(root=None):
+    args = sys.argv[1:]
     usage = "usage: %prog [-p port] zodb_uri"
     
     parser = OptionParser(usage=usage)
@@ -46,6 +44,7 @@ def main(args=None, root=None):
     
     config = Configurator(root_factory = get_root)
     config.add_static_view(name='static', path='eye:static')
+    import eye
     config.scan(eye)
     app = config.make_wsgi_app()
     
@@ -56,4 +55,4 @@ def main(args=None, root=None):
     serve(app, host='0.0.0.0', port=port)
 
 if __name__ == '__main__':
-    main()
+    eye()
