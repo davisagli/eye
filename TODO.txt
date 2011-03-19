@@ -1,3 +1,8 @@
+Before release:
+ - license
+ - docs
+ - clean up js
+
 It's probably time to write some tests...
 
 Traversal:
@@ -16,15 +21,14 @@ Stats:
  - # of transactions in history
 Issues:
  - Should probably include various object aspects instead of just picking one
- - Unicode in repr?
- - Need to urlencode / in keys (e.g. mimetype objects)
+ - Need to urlencode / in keys (e.g. Zope mimetype objects)
  - Detect object cycles
+ - Can we prevent weird shit happening via descriptors?
 Other features:
  - Pretty font
  - Show file name, basic stats
  - Batched tree for large containers
  - ZEXP export
- - API to invoke the thing with some root object
  - Browse object history
  - Authentication
  - Can you imagine if it was fulltext-searchable and editable? OMG!

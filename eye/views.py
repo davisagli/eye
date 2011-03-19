@@ -8,6 +8,7 @@ from persistent import Persistent
 
 @view_config(path_info=r'^/$')
 def index(request):
+    """Render the main page"""
     index = open(os.path.join(os.path.dirname(__file__), 'static', 'index.html'))
     return Response(content_type='text/html', app_iter=index)
     
@@ -15,6 +16,7 @@ def index(request):
 
 @view_config(renderer='json')
 def repr(context, request):
+    """Return an object's representation as JSON"""
     return {
         'info': cgi.escape(pprint.pformat(context.context)),
     }
@@ -22,6 +24,8 @@ def repr(context, request):
 
 @view_config(name='tree', renderer='json')
 def tree(context, request):
+    """Return info about an object's members as JSON"""
+
     content_tree = _build_tree(context, 2, 1)
     if type(content_tree) == dict:
         content_tree  =  [ content_tree ] 
@@ -29,44 +33,35 @@ def tree(context, request):
     return content_tree
 
 
-def _build_tree(elem, level = 1024, remove_root = 0, id=None):
-        """Levels represents how deep the tree is
-        """
-        if level <= 0:
-            return None
-        level -= 1
-        
-        node = {}
-        children = []
-        result = None
-        items = elem.items()
-        for k, v in items:
-            result = (_build_tree(v, level, id=k))
-            if result:
-                children.append(result)
+def _build_tree(node, level = 1024, remove_root = 0, id=None):
+    if level <= 0:
+        return None
+    level -= 1
+    
+    node = {}
+    children = []
+    result = None
+    items = node.items()
+    for k, v in items:
+        result = (_build_tree(v, level, id=k))
+        if result:
+            children.append(result)
 
-        if remove_root:
-            return children
-        else:
-            node["key"] = id
-            node["title"] = '%s (%s)' % (id, _get_type(elem.context))
-            node["children"] = []
+    if remove_root:
+        return children
+    else:
+        node["key"] = id
+        node["title"] = '%s (%s)' % (id, type(node.context).__name__)
+        node["children"] = []
 
-            if len(items):
-                node["isFolder"] = True
+        if len(items):
+            node["isFolder"] = True
 
-                if not len(node["children"]):
-                    node["isLazy"] = True
+            if not len(node["children"]):
+                node["isLazy"] = True
 
-            node["children"] = children
-            if isinstance(elem.context, Persistent):
-                node['addClass'] = 'persistent'
+        node["children"] = children
+        if isinstance(node.context, Persistent):
+            node['addClass'] = 'persistent'
 
-        return node 
-
-
-def _get_type(ob):
-    try:
-        return ob.__class__.__name__
-    except AttributeError:
-        return type(ob)
+    return node 
