@@ -1,7 +1,6 @@
 import collections
 import inspect
 
-
 PRIMITIVES = set([int, bool, str, unicode, type(None)])
 
 
@@ -31,7 +30,10 @@ class Node(object):
                 d = None
         
         if d is None:
-            d = dict(inspect.getmembers(self.context))
+            try:
+                d = dict(inspect.getmembers(self.context))
+            except AttributeError:
+                d = {}
         
         return dict((k, Node(v)) for k,v in d.iteritems())
 

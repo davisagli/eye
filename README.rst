@@ -52,7 +52,6 @@ Inspect an arbitrary object
   >>> foo = datetime.now()
   >>> import eye; eye.eye(foo)
 
-
 Similar tools
 =============
 
