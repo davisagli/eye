@@ -4,6 +4,9 @@ Changelog
 1.0b2 - unreleased
 ------------------
 
+* Work around issue with traversing objects with slashes in their key.
+  [davisagli]
+
 * Handle case where objects providing interfaces not present in the Python
   environment can't be unpickled even into Broken objects.
   [davisagli]

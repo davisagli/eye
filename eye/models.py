@@ -36,10 +36,19 @@ class Node(object):
             except AttributeError:
                 d = {}
         
-        return dict((cgi.escape(str(k)), Node(v)) for k,v in d.iteritems())
+        return _normalize(d)
 
     def __getitem__(self, name):
         return self._dict()[name]
 
     def items(self):
         return sorted(self._dict().items())
+
+
+def _normalize(d):
+    d2 = {}
+    for k, v in d.iteritems():
+        k = str(k).replace('/', '_')
+        k = cgi.escape(k)
+        d2[k] = Node(v)
+    return d2
