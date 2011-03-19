@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0b2 - unreleased
+1.0b2 - 2011-03-19
 ------------------
 
 * Work around issue with traversing objects with slashes in their key.

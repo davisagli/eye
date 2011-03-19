@@ -14,7 +14,7 @@ requires = [
     ]
 
 setup(name='eye',
-      version='1.0b1',
+      version='1.0b2',
       description='A generic web-based browser of ZODB databases.',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[
