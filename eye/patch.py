@@ -1,4 +1,7 @@
-"""Monkey-patch zope.interface so that unpickling interfaces that aren't
+"""
+YARRRRRRR!
+
+Monkey-patch zope.interface so that unpickling interfaces that aren't
 in the Python environment doesn't break.
 """
 
