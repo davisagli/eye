@@ -69,7 +69,8 @@ Credits
 Thanks to:
 
 * Roberto Allende and menttes. The initial inspiration and code is from their zope2.zodbbrowser.
-* Elizabeth Leddy
 * Jim Fulton for creating the ZODB.
 * The creators of the Pyramid web framework.
 * The creators of the JQuery, JQuery UI, and Dynatree libraries.
+* Elizabeth Leddy
+* Hanno Schlichting
