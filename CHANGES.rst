@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0b3 - unreleased
+------------------
+
+* Provide better representation of persistent BTree structures.
+  [hannosch]
+
 1.0b2 - 2011-03-19
 ------------------
 
