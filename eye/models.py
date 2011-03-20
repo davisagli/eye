@@ -16,9 +16,23 @@ class Node(object):
         type_ = type(self.context)
         if type_ in PRIMITIVES:
             d = {}
-        elif type_.__name__.endswith('BTree'):
+        elif (type_.__name__.endswith('BTree') or
+              type_.__name__.endswith('TreeSet')):
             # ZODB BTrees
+            d = {}
+            bucket = self.context._firstbucket
+            if bucket is None:
+                return d
+            while True:
+                d[repr(bucket.minKey())] = bucket
+                bucket = bucket._next
+                if bucket is None:
+                    break
+        elif type_.__name__.endswith('Bucket'):
             d = self.context
+        elif (type_.__name__.startswith('BTrees.') and
+              type_.__name__.endswith('Set')):
+            d = dict(enumerate(self.context.keys()))
         elif isinstance(self.context, collections.Mapping):
             d = self.context
         elif isinstance(self.context, collections.Iterable):
