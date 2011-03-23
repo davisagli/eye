@@ -8,7 +8,8 @@ CHANGES = open(os.path.join(here, 'CHANGES.rst')).read()
 
 requires = [
     'PasteScript',
-    'pyramid',
+    'WebOb',
+    'repoze.debug',
     'repoze.zodbconn',
     'ZODB3',
     ]
@@ -24,7 +25,7 @@ setup(name='eye',
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.6",
-        "Framework :: Pylons",
+        "Framework :: Paste",
         "Framework :: ZODB",
         "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
         ],
@@ -39,10 +40,7 @@ setup(name='eye',
       tests_require= requires,
       test_suite="eye",
       entry_points = """\
-      [paste.app_factory]
-      main = eye:eye
       [console_scripts]
-      eye = eye:eye
+      eye = eye:main
       """,
-      paster_plugins=['pyramid'],
       )

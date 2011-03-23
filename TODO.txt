@@ -1,3 +1,7 @@
+Before 1.0:
+- document connecting to ZEO, RelStorage
+- Don't bind to all interfaces by default
+
 It's probably time to write some tests...
 
 Icons:
@@ -13,7 +17,6 @@ Stats:
  - size by class
  - # of transactions in history
 Issues:
- - Don't bind to all interfaces by default
  - Should probably include various object aspects instead of just picking one
  - Detect object cycles
  - Can we prevent weird shit happening via descriptors?

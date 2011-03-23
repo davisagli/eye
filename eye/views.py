@@ -1,36 +1,26 @@
 import cgi
-import os
+import json
 import pprint
-from pyramid.response import Response
-from pyramid.view import view_config
+from webob import Response
 from persistent import Persistent
 
 
-@view_config(path_info=r'^/$')
-def index(request):
-    """Render the main page"""
-    index = open(os.path.join(os.path.dirname(__file__), 'static', 'index.html'))
-    return Response(content_type='text/html', app_iter=index)
-    
-
-
-@view_config(renderer='json')
-def repr(context, request):
+def as_json(context):
     """Return an object's representation as JSON"""
-    return {
+    info = {
         'info': cgi.escape(pprint.pformat(context.context)),
     }
+    return Response(content_type='application/json', body=json.dumps(info))
 
 
-@view_config(name='tree', renderer='json')
-def tree(context, request):
+def as_tree(context):
     """Return info about an object's members as JSON"""
 
-    content_tree = _build_tree(context, 2, 1)
-    if type(content_tree) == dict:
-        content_tree  =  [ content_tree ] 
+    tree = _build_tree(context, 2, 1)
+    if type(tree) == dict:
+        tree = [tree] 
     
-    return content_tree
+    return Response(content_type='application/json', body=json.dumps(tree))
 
 
 def _build_tree(node, level = 1024, remove_root = 0, id=None):

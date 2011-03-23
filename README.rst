@@ -15,9 +15,8 @@ Installation
 
 At this point Eye has been tested on Python 2.6.
 
-Eye has a few dependencies including the Pyramid web framework. Therefore it's
-recommended to install it in a virtualenv or buildout to keep it isolated from
-other software on your system.
+Eye has a few dependencies. Therefore it's recommended to install it in a
+virtualenv or buildout to keep it isolated from other software on your system.
 
 Assuming you have virtualenv installed, the following commands will install Eye::
 
@@ -70,7 +69,7 @@ Thanks to:
 
 * Roberto Allende and menttes. The initial inspiration and code is from their zope2.zodbbrowser.
 * Jim Fulton for creating the ZODB.
-* The creators of the Pyramid web framework.
+* The creators of the WSGI tools used by Eye.
 * The creators of the JQuery, JQuery UI, and Dynatree libraries.
 * Elizabeth Leddy
 * Hanno Schlichting

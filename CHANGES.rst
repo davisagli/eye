@@ -4,6 +4,12 @@ Changelog
 1.0b3 - unreleased
 ------------------
 
+* Remove non-functional paste.app_factory entry point.
+  [davisagli]
+
+* Do our own traversal and rendering rather than depending on Pyramid.
+  [davisagli]
+
 * Provide better representation of persistent BTree structures.
   [hannosch]
 
