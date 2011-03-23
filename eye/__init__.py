@@ -72,7 +72,7 @@ def eye(root=None, zodb_uri=None, port=8080):
         from repoze.debug.pdbpm import PostMortemDebug
         app = PostMortemDebug(app)
     
-    serve(app, host='0.0.0.0', port=port)
+    serve(app, host='127.0.0.1', port=port)
 
 
 def main():

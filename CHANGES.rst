@@ -4,6 +4,9 @@ Changelog
 1.0b3 - unreleased
 ------------------
 
+* Only serve on local network interface.
+  [davisagli]
+
 * Remove non-functional paste.app_factory entry point.
   [davisagli]
 

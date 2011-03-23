@@ -1,6 +1,5 @@
 Before 1.0:
 - document connecting to ZEO, RelStorage
-- Don't bind to all interfaces by default
 
 It's probably time to write some tests...
 
