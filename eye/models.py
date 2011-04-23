@@ -1,6 +1,8 @@
 import cgi
 import collections
 import inspect
+from persistent.mapping import PersistentMapping
+
 
 PRIMITIVES = set([int, bool, str, unicode, type(None)])
 
@@ -24,7 +26,7 @@ class Node(object):
             if bucket is None:
                 return d
             while True:
-                d[repr(bucket.minKey())] = bucket
+                d[bucket.minKey()] = bucket
                 bucket = bucket._next
                 if bucket is None:
                     break
@@ -33,7 +35,8 @@ class Node(object):
         elif (type_.__name__.startswith('BTrees.') and
               type_.__name__.endswith('Set')):
             d = dict(enumerate(self.context.keys()))
-        elif isinstance(self.context, collections.Mapping):
+        elif (isinstance(self.context, collections.Mapping) or
+              isinstance(self.context, PersistentMapping)):
             d = self.context
         elif isinstance(self.context, collections.Iterable):
             d = dict(enumerate(self.context))
