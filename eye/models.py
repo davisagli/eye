@@ -1,6 +1,7 @@
 import cgi
 import collections
 import inspect
+import urlparse
 from persistent.mapping import PersistentMapping
 
 
@@ -57,6 +58,8 @@ class Node(object):
 
     def __getitem__(self, name):
         d = self._dict()
+        if name not in d:
+            name = urlparse.unquote(name)
         if name not in d and isinstance(name, str):
             name = name.decode('utf-8')
         return d[name]
