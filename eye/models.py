@@ -1,6 +1,7 @@
 import cgi
 import collections
 import inspect
+import urlparse
 from persistent.mapping import PersistentMapping
 
 
@@ -56,7 +57,12 @@ class Node(object):
         return _normalize(d)
 
     def __getitem__(self, name):
-        return self._dict()[name]
+        d = self._dict()
+        if name not in d:
+            name = urlparse.unquote(name)
+        if name not in d and isinstance(name, str):
+            name = name.decode('utf-8')
+        return d[name]
 
     def items(self):
         return sorted(self._dict().items())
@@ -65,7 +71,7 @@ class Node(object):
 def _normalize(d):
     d2 = {}
     for k, v in d.iteritems():
-        k = str(k).replace('/', '_')
+        k = unicode(k).replace('/', '_')
         k = cgi.escape(k)
         d2[k] = Node(v)
     return d2
