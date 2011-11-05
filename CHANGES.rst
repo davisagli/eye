@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0b3 - unreleased
-------------------
+1.0 - 2011-11-05
+----------------
 
 * Only serve on local network interface.
   [davisagli]
