@@ -4,6 +4,7 @@ Changelog
 1.0.1 - unreleased
 ------------------
 
+* Python3 support
 
 1.0 - 2011-11-05
 ----------------
