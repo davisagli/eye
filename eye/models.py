@@ -1,21 +1,21 @@
-import cgi
-import collections
+import html
+import collections.abc
 import inspect
-import urlparse
+from urllib.parse import unquote
 from persistent.mapping import PersistentMapping
 
 
-PRIMITIVES = set([int, bool, str, unicode, type(None)])
+PRIMITIVES = set([int, bool, str, type(None)])
 
 
 class Node(object):
 
     def __init__(self, context):
         self.context = context
-    
+
     def _dict(self):
         d = None
-        
+
         type_ = type(self.context)
         if type_ in PRIMITIVES:
             d = {}
@@ -36,31 +36,32 @@ class Node(object):
         elif (type_.__name__.startswith('BTrees.') and
               type_.__name__.endswith('Set')):
             d = dict(enumerate(self.context.keys()))
-        elif (isinstance(self.context, collections.Mapping) or
-              isinstance(self.context, PersistentMapping)):
+        elif (isinstance(self.context, collections.abc.Mapping) or
+              isinstance(self.context, PersistentMapping) or
+              (hasattr(self.context, 'keys') and hasattr(self.context, '__getitem__'))):
             d = self.context
-        elif isinstance(self.context, collections.Iterable):
+        elif isinstance(self.context, collections.abc.Iterable):
             d = dict(enumerate(self.context))
         elif hasattr(self.context, '__Broken_state__'):
             # ZODB
-            if isinstance(self.context.__Broken_state__, collections.Mapping):
+            if isinstance(self.context.__Broken_state__, collections.abc.Mapping):
                 d = self.context.__Broken_state__
             else:
                 d = None
-        
+
         if d is None:
             try:
                 d = dict(inspect.getmembers(self.context))
             except AttributeError:
                 d = {}
-        
+
         return _normalize(d)
 
     def __getitem__(self, name):
         d = self._dict()
         if name not in d:
-            name = urlparse.unquote(name)
-        if name not in d and isinstance(name, str):
+            name = unquote(name)
+        if name not in d and isinstance(name, bytes):
             name = name.decode('utf-8')
         return d[name]
 
@@ -68,10 +69,10 @@ class Node(object):
         return sorted(self._dict().items())
 
 
-def _normalize(d):
+def _normalize(d: collections.abc.Mapping):
     d2 = {}
-    for k, v in d.iteritems():
-        k = unicode(k).replace('/', '_')
-        k = cgi.escape(k)
+    for k, v in d.items():
+        k = str(k).replace('/', '_')
+        k = html.escape(k)
         d2[k] = Node(v)
     return d2

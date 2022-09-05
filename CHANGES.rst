@@ -1,9 +1,21 @@
 Changelog
 =========
 
-1.0.1 - unreleased
-------------------
+1.1 (unreleased)
+----------------
 
+- Nothing changed yet.
+
+
+1.1+md.2 (2022-09-05)
+---------------------
+
+- Packaging re-upload without missing rst files.
+
+1.1+md.1 (2022-09-05)
+---------------------
+
+* Python3 support
 
 1.0 - 2011-11-05
 ----------------
