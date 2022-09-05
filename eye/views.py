@@ -1,4 +1,4 @@
-import cgi
+import html
 import json
 import pprint
 from webob import Response
@@ -8,9 +8,9 @@ from persistent import Persistent
 def as_json(context):
     """Return an object's representation as JSON"""
     info = {
-        'info': cgi.escape(pprint.pformat(context.context)),
+        'info': html.escape(pprint.pformat(context.context)),
     }
-    return Response(content_type='application/json', body=json.dumps(info))
+    return Response(content_type='application/json', body=json.dumps(info), charset='utf-8')
 
 
 def as_tree(context):
@@ -18,16 +18,16 @@ def as_tree(context):
 
     tree = _build_tree(context, 2, 1)
     if type(tree) == dict:
-        tree = [tree] 
-    
-    return Response(content_type='application/json', body=json.dumps(tree))
+        tree = [tree]
+
+    return Response(content_type='application/json', body=json.dumps(tree), charset='utf-8')
 
 
 def _build_tree(node, level = 1024, remove_root = 0, id=None):
     if level <= 0:
         return None
     level -= 1
-    
+
     tree = {}
     children = []
     result = None
