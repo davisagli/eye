@@ -4,8 +4,7 @@ Changelog
 1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Packaging re-upload without missing rst files.
 
 1.1+md.1 (2022-09-05)
 ---------------------
